@@ -15,7 +15,10 @@ from calendar_keyboard import create_calendar
 bot = Bot(TOKEN)
 dp = Dispatcher()
 
-TIMES = ["10-11", "12-13", "13-14", "14-15", "15-16", "16-17", "17-18", "18-19"]
+TIMES = [
+"10-11","12-13","13-14","14-15",
+"15-16","16-17","17-18","18-19"
+]
 
 # START
 @dp.message(CommandStart())
