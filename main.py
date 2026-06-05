@@ -73,11 +73,14 @@ async def choose_time(callback: CallbackQuery, state: FSMContext):
 
 @dp.message(Register.name)
 async def get_name(message: Message, state: FSMContext):
+    fio = message.text.strip()
     fio_pattern = r"^[А-Яа-яёЁA-Za-z\-]+(\s+[А-Яа-яёЁA-Za-z\-]+){2}$"
-    if not re.match(fio_pattern, message.text.strip()):
+    if not re.match(fio_pattern, fio):
         await message.answer("❌ Неверный формат ФИО. Введите Фамилию, Имя и Отчество (три слова):")
         return
-    await state.update_data(name=message.text.strip())
+    
+    await state.update_data(name=fio)
+    # await message.answer(f"ФИО {fio} успешно сохранено!")
     await message.answer("Введите номер телефона:")
     await state.set_state(Register.phone)
 
@@ -95,6 +98,8 @@ async def get_phone(message: Message, state: FSMContext):
 
     await state.update_data(phone=clean_phone)
     await message.answer(f"Номер {clean_phone} успешно сохранен!")
+    await message.answer("Введите Telegram (@username):")
+    await state.set_state(Register.telegram)
 
 @dp.message(Register.telegram)
 async def finish(message: Message, state: FSMContext):
