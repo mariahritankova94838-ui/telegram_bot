@@ -5,7 +5,7 @@ from aiogram.types import Message, CallbackQuery
 from aiogram.filters import CommandStart, Command
 from aiogram.fsm.context import FSMContext
 
-# Правильные импорты (разнесены на разные строки)
+
 from config import *
 from states import Register
 from keyboards import *
@@ -38,13 +38,13 @@ async def choose_class(message: Message, state: FSMContext):
     await state.update_data(class_user=user_class)
     
     if user_class in ["5", "6", "7", "8"]:
-        await message.answer("Выберите предмет", reply_markup=subjects_middle())
+        await message.answer("Выберите предмет:", reply_markup=subjects_middle())
     elif user_class == "9":
-        await message.answer("Выберите направление", reply_markup=subject_9())
+        await message.answer("Выберите предмет:", reply_markup=subject_9())
     elif user_class == "10":
-        await message.answer("Выберите предмет", reply_markup=subject_10())
+        await message.answer("Выберите предмет:", reply_markup=subject_10())
     elif user_class == "11":
-        await message.answer("Выберите направление", reply_markup=subject_11())
+        await message.answer("Выберите предмет:", reply_markup=subject_11())
     await state.set_state(Register.subject_select)
 
 @dp.message(Register.subject_select)
