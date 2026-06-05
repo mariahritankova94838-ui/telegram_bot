@@ -84,13 +84,17 @@ async def get_name(message: Message, state: FSMContext):
 @dp.message(Register.phone)
 async def get_phone(message: Message, state: FSMContext):
     clean_phone = re.sub(r"\D", "", message.text)
-    if not (10 <= len(clean_phone) <= 11):
-        await message.answer("❌ Некорректный формат телефона. Введите цифры:")
+    if len(clean_phone) == 11 and clean_phone[0] in '78':
+        clean_phone = '7' + clean_phone[1:]
+    elif len(clean_phone) == 10:
+        clean_phone = '7' + clean_phone
+    else:
+        await message.answer("❌ Некорректный формат телефона. Введите номер телефона в формате: 89001234567")
         return
-    formatted_phone = f"+{clean_phone}" if len(clean_phone) != 11 else f"+7{clean_phone[1:]}"
-    await state.update_data(phone=formatted_phone)
-    await message.answer("Введите Telegram (@username):")
-    await state.set_state(Register.telegram)
+
+
+    await state.update_data(phone=clean_phone)
+    await message.answer(f"Номер {clean_phone} успешно сохранен!")
 
 @dp.message(Register.telegram)
 async def finish(message: Message, state: FSMContext):
