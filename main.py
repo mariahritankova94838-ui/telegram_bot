@@ -80,7 +80,7 @@ async def get_name(message: Message, state: FSMContext):
         return
     
     await state.update_data(name=fio)
-    await message.answer(f"ФИО <b>{fio}</b> успешно сохранено!", parse_mode="HTML")
+    await message.answer(f"ФИО <b>{fio}</b> успешно сохранено!🤍", parse_mode="HTML")
     await message.answer("Введите номер телефона:")
     await state.set_state(Register.phone)
 
@@ -97,7 +97,7 @@ async def get_phone(message: Message, state: FSMContext):
 
 
     await state.update_data(phone=clean_phone)
-    await message.answer(f"Номер {clean_phone} успешно сохранен!")
+    await message.answer(f"Номер {clean_phone} успешно сохранен!🤍")
     await message.answer("Введите Telegram (@username):")
     await state.set_state(Register.telegram)
 
@@ -109,7 +109,7 @@ async def finish(message: Message, state: FSMContext):
     if not re.match(tg_pattern, tg_username):
         await message.answer("❌ Некорректный юзернейм. Попробуйте еще раз:")
         return
-    await message.answer(f"Ваш юзернейм <b>@{tg_username}</b> сохранен!", parse_mode="HTML")
+    await message.answer(f"Ваш юзернейм <b>@{tg_username}</b> сохранен!🤍", parse_mode="HTML")
 
     data = await state.get_data()
     format_lesson = data["format"]
@@ -130,7 +130,7 @@ async def finish(message: Message, state: FSMContext):
     await bot.send_message(GROUP_CHAT_ID, admin_text)
 
     # Текст для ученика
-    user_text = (f"✅ Вы успешно записаны!\n\n"
+    user_text = (f"🤍Вы успешно записаны!🤍\n\n"
                  f"📅 Дата: {data['date']}\n"
                  f"⏰ Время: {data['time']}\n"
                  f"📍 Формат: {format_lesson}\n\n"
