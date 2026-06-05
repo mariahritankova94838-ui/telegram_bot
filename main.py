@@ -135,7 +135,7 @@ async def finish(message: Message, state: FSMContext):
                  f"⏰ Время: {data['time']}\n"
                  f"📍 Формат: {format_lesson}\n\n"
                  f"{extra_info}")
-    
+    await message.answer("Хорошего Вам дня!💐")
     await message.answer(user_text)
     await state.clear()
 
