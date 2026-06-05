@@ -73,9 +73,9 @@ async def choose_time(callback: CallbackQuery, state: FSMContext):
 
 @dp.message(Register.name)
 async def get_name(message: Message, state: FSMContext):
-    fio_pattern = r"^[А-Яа-яёЁA-Za-z\-]+\s+[А-Яа-яёЁA-Za-z\-]+\s+[А-Яа-яёЁA-Za-z\-]+$"
+    fio_pattern = r"^[А-Яа-яёЁA-Za-z\-]+(\s+[А-Яа-яёЁA-Za-z\-]+){2}$"
     if not re.match(fio_pattern, message.text.strip()):
-        await message.answer("❌ Неверный формат ФИО. Введите Фамилию, Имя и Отчество:")
+        await message.answer("❌ Неверный формат ФИО. Введите Фамилию, Имя и Отчество (три слова):")
         return
     await state.update_data(name=message.text.strip())
     await message.answer("Введите номер телефона:")
