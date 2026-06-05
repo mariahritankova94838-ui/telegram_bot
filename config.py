@@ -5,3 +5,6 @@ GROUP_CHAT_ID = -1003687646664
 TEACHER = "@MER_MARY7"
 
 ADMINS = [1547587786, 890408556]
+
+LINK_ONLINE = "https://telemost.yandex.ru/j/38845885380912"
+ADDRESS_OFFICE = "г. Москва, ул. Снежная, д. 12"
