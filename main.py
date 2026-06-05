@@ -109,6 +109,7 @@ async def finish(message: Message, state: FSMContext):
     if not re.match(tg_pattern, tg_username):
         await message.answer("❌ Некорректный юзернейм. Попробуйте еще раз:")
         return
+    await message.answer(f"Ваш юзернейм <b>@{tg_username}</b> сохранен!", parse_mode="HTML")
 
     data = await state.get_data()
     format_lesson = data["format"]
