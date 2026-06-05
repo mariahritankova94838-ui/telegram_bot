@@ -33,9 +33,9 @@ def subject_9():
         keyboard=[
             [KeyboardButton(text="ОГЭ информатика")],
             [KeyboardButton(text="ОГЭ математика")],
-            [KeyboardButton(text="Подтянуть знания")],
+            [KeyboardButton(text="Подтянуть знания по математике")],
+            [KeyboardButton(text="Подтянуть знания по информатике")],
             [KeyboardButton(text="Связь с преподавателем")]
-        ],
         resize_keyboard=True
     )
 
@@ -44,7 +44,9 @@ def subject_10():
 
     return ReplyKeyboardMarkup(
         keyboard=[
-            [KeyboardButton(text="Математика")],
+            [KeyboardButton(text="Математика ЕГЭ")],
+            [KeyboardButton(text="Подтянуть знания по информатике")],
+            [KeyboardButton(text="Подтянуть знания по математике")],
             [KeyboardButton(text="Связь с преподавателем")]
         ],
         resize_keyboard=True
@@ -56,7 +58,8 @@ def subject_11():
     return ReplyKeyboardMarkup(
         keyboard=[
             [KeyboardButton(text="ЕГЭ математика")],
-            [KeyboardButton(text="Подтянуть знания")],
+            [KeyboardButton(text="Подтянуть знания по математике")],
+            [KeyboardButton(text="Подтянуть знания по информатике")],
             [KeyboardButton(text="Связь с преподавателем")]
         ],
         resize_keyboard=True
