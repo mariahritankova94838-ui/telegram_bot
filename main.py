@@ -61,12 +61,14 @@ async def choose_format(message: Message, state: FSMContext):
 
 @dp.callback_query(F.data.startswith("date_"))
 async def choose_date(callback: CallbackQuery, state: FSMContext):
+    await callback.answer() 
     await state.update_data(date=callback.data.split("_")[1])
     await callback.message.answer("Выберите время:", reply_markup=time_keyboard(TIMES))
     await state.set_state(Register.time_select)
 
 @dp.callback_query(F.data.startswith("time_"))
 async def choose_time(callback: CallbackQuery, state: FSMContext):
+    await callback.answer() 
     await state.update_data(time=callback.data.split("_")[1])
     await callback.message.answer("Введите ФИО ученика (три слова):")
     await state.set_state(Register.name)
