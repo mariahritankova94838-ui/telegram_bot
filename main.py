@@ -101,6 +101,7 @@ async def get_phone(message: Message, state: FSMContext):
     await message.answer("Введите Telegram (@username):")
     await state.set_state(Register.telegram)
 
+
 @dp.message(Register.telegram)
 async def finish(message: Message, state: FSMContext):
     tg_username = message.text.strip().lstrip("@")
