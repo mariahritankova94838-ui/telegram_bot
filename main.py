@@ -80,7 +80,7 @@ async def get_name(message: Message, state: FSMContext):
         return
     
     await state.update_data(name=fio)
-    # await message.answer(f"ФИО {fio} успешно сохранено!")
+    await message.answer(f"ФИО <b>{fio}</b> успешно сохранено!", parse_mode="HTML")
     await message.answer("Введите номер телефона:")
     await state.set_state(Register.phone)
 
